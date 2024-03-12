@@ -88,7 +88,11 @@ app.post('/api/users/:_id/exercises', (req, res) => {
   user.log.push(exercise);
 
   // Send the updated user object in the response
-  res.json(user);
+  res.json({username: user.username,
+    description: exercise.description,
+    duration: exercise.duration,
+    date: new Date(exercise.date).toDateString(),
+    _id: user._id,});
 });
 
 // Get full exercise log of a user
